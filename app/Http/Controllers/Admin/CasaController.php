@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Barco;
-use App\Marca;
+use App\Casa;
+use App\Tipo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-class BarcoController extends Controller
+class CasaController extends Controller
 {
   
   
@@ -32,12 +32,12 @@ class BarcoController extends Controller
        // }
 
                 
-        // $dados = Barco::all();
-        $dados = Barco::paginate(5);
+        // $dados = Casa::all();
+        $dados = Casa::paginate(5);
 
-        $soma = Barco::sum('preco');
+        $soma = Casa::sum('preco');
 
-        return view('admin.barcos_list', ['barcos' => $dados, 'soma' => $soma]);
+        return view('admin.casas_list', ['casas' => $dados, 'soma' => $soma]);
     }
 
     /**
@@ -48,10 +48,10 @@ class BarcoController extends Controller
     public function create()
     {
         // informações auxiliares que serão utilizadas no form de cadastro
-        $marcas = Marca::orderBy('nome')->get();        
+        $tipos = Tipo::orderBy('nome')->get();        
 
-        return view('admin.barcos_form', 
-                    ['marcas'=>$marcas, 'acao' => 1]);
+        return view('admin.casas_form', 
+                    ['tipos'=>$tipos, 'acao' => 1]);
     }
 
     /**
@@ -77,10 +77,10 @@ class BarcoController extends Controller
         $dados['foto'] = $path;
         }
 
-        $inc = Barco::create($dados);
+        $inc = Casa::create($dados);
 
         if ($inc) {
-            return redirect()->route('barcos.index')
+            return redirect()->route('casas.index')
                    ->with('status', $request->modelo . ' cadastrado com sucesso!');     
         }
     }
@@ -105,11 +105,11 @@ class BarcoController extends Controller
     public function edit($id)
     {
         // posiciona no registro a ser alterado e obtém seus dados
-        $reg = Barco::find($id);
+        $reg = Casa::find($id);
 
-        $marcas = Marca::orderBy('nome')->get();
+        $tipos = Tipo::orderBy('nome')->get();
       
-        return view('admin.barcos_form', ['reg' => $reg, 'marcas' => $marcas, 
+        return view('admin.casas_form', ['reg' => $reg, 'tipos' => $tipos, 
                                           'acao' => 2]);
     }
 
@@ -126,7 +126,7 @@ class BarcoController extends Controller
         $dados = $request->all();
 
         // posiciona no registo a ser alterado
-        $reg = Barco::find($id);
+        $reg = Casa::find($id);
 
           // se o campo foto foi preenchido  e enviado (valido)
           if ($request->hasFile('foto') && $request->file('foto')->isValid()){
@@ -144,7 +144,7 @@ class BarcoController extends Controller
         $alt = $reg->update($dados);
 
         if ($alt) {
-            return redirect()->route('barcos.index')
+            return redirect()->route('casas.index')
                             ->with('status', $request->modelo . ' Alterado!');
         }
         
@@ -158,36 +158,36 @@ class BarcoController extends Controller
      */
     public function destroy($id)
     {
-        $bar = Barco::find($id);
-        $foto = $bar->foto;
-        if ($bar->delete()) {
+        $cas = Casa::find($id);
+        $foto = $cas->foto;
+        if ($cas->delete()) {
            
             if($foto != null){
                 Storage::delete($foto);
             }
 
-            return redirect()->route('barcos.index')
-                            ->with('status', $bar->modelo . ' Excluído!');
+            return redirect()->route('casas.index')
+                            ->with('status', $cas->modelo . ' Excluído!');
         }
     }
 
     public function graf(){
 
-        $sql = "select m.nome as marca, count(c.id) as num from barcos c
-                inner join marcas m
-                on c.marca_id = m.id
+        $sql = "select m.nome as tipo, count(c.id) as num from casas c
+                inner join tipos m
+                on c.tipo_id = m.id
                 group by m.nome";
 
                 $dados = DB::select($sql);
 
-        return view('admin.barcos_graf', ['dados'=>$dados]);
+        return view('admin.casas_graf', ['dados'=>$dados]);
     }
 
     
-    public function relbarcos() {
-        $barcos = Barco::all();
-        return \PDF::loadView('admin.relbarcos', 
-                            ['barcos'=>$barcos])->stream();
+    public function relcasas() {
+        $casas = Casa::all();
+        return \PDF::loadView('admin.relcasas', 
+                            ['casas'=>$casas])->stream();
     }
     
 }

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Barco;
-use App\Marca;
+use App\Casa;
+use App\Tipo;
 
-class BarcoComercialController extends Controller
+class CasaComercialController extends Controller
 {
     public function filtros(Request $request) {
         $modelo = $request->modelo;
@@ -18,9 +18,9 @@ class BarcoComercialController extends Controller
             array_push($filtro, array('modelo','like', '%'.$modelo.'%'));
         }
 
-        $barcos = Barco::where($filtro)->orderBy('modelo')
+        $casas = Casa::where($filtro)->orderBy('modelo')
             ->paginate(5);
 
-        return view('site.barcos_pesquisa', compact('barcos'));
+        return view('site.casas_pesquisa', compact('casas'));
     }
 }

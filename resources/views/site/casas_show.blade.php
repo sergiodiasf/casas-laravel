@@ -1,14 +1,12 @@
 @extends('modelo')
 
-
-
 @section('conteudo')
 
 <div class="container">
 
 <div class="row">
     <div class="col-sm-6">
-        <h2>Lista de Barcos</h2>
+        <h2>Lista de casas</h2>
     </div>
     <div class="col-sm-5">
      <div class="form-group input-group">
@@ -35,7 +33,7 @@
     <thead>
       <tr>
         <th>Descrição</th>
-        <th>Marca</th>
+        <th>Tipo</th>
         <th>Quant.</th>
         <th>Preço R$</th>
         <th>Ações</th>
@@ -46,7 +44,7 @@
 @forelse ($produtos as $p)
     <tr>
     <td>{{$p->nome}}</td>
-    <td>{{$p->marca}}</td>
+    <td>{{$p->tipo}}</td>
     <td>{{$p->quant}}</td>
     <td>{{number_format($p->preco, 2, ',','.') }}</td>
     <td>

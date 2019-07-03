@@ -1,12 +1,12 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
-use App\Marca;
+use App\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MarcaController extends Controller
+class TipoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $marcas = Marca::paginate(6);
-        return view('admin.marcas_list', compact('marcas'));
+        $tipos = Tipo::paginate(5);
+        return view('admin.tipos_list', compact('tipos'));
     }
 
     /**
@@ -29,7 +29,7 @@ class MarcaController extends Controller
         // 1: indica inclusão
         $acao = 1;
 
-        return view('admin.marcas_form', compact('acao'));
+        return view('admin.tipos_form', compact('acao'));
     }
 
     /**
@@ -41,26 +41,26 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nome' => 'required|unique:marcas|min:2|max:60'
+            'nome' => 'required|unique:tipos|min:2|max:60'
 
         ]);
 
-        $inc = Marca::insert(['nome' => $request->nome]);
+        $inc = Tipo::insert(['nome' => $request->nome]);
 
 
         if ($inc) {
-            return redirect()->route('marcas.index')
-                ->with('status', 'Marca ' .$request->nome. ' incluída!');
+            return redirect()->route('tipos.index')
+                ->with('status', 'Tipo ' .$request->nome. ' incluída!');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Marca  $marca
+     * @param  \App\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function show(Marca $marca)
+    public function show(Tipo $tipo)
     {
         //
     }
@@ -74,19 +74,19 @@ class MarcaController extends Controller
     public function edit($id)
     {
         // posiciona no registro a ser alterado e obtém seus dados
-        $reg = Marca::find($id);
+        $reg = Tipo::find($id);
 
         $acao = 2;
 
 
-        return view('admin.marcas_form', compact('reg', 'acao'));
+        return view('admin.tipos_form', compact('reg', 'acao'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Marca  $marca
+     * @param  \App\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -96,13 +96,13 @@ class MarcaController extends Controller
         $dados = $request->all();
 
         // posiciona no registo a ser alterado
-        $reg = Marca::find($id);
+        $reg = Tipo::find($id);
 
         // realiza a alteração
         $alt = $reg->update($dados);
 
         if ($alt) {
-            return redirect()->route('marcas.index')
+            return redirect()->route('tipos.index')
                 ->with('status', $reg->nome .' alterada!');
         }
     }
@@ -115,10 +115,10 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        $marca = Marca::find($id);
-        if ($marca->delete()) {
-            return redirect()->route('marcas.index')
-                ->with('status', 'Marca '. $marca->nome .' excluída!');
+        $tipo = Tipo::find($id);
+        if ($tipo->delete()) {
+            return redirect()->route('tipos.index')
+                ->with('status', 'Tipo '. $tipo->nome .' excluída!');
         }
     }
 }

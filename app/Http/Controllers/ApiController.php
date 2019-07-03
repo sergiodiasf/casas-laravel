@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Barco;
-use App\Marca;
+use App\Casa;
 
 class ApiController extends Controller
 {
     public function index()
     {
-       $barcos = Barco::orderBy('modelo')->get();
+       $casas = Casa::orderBy('modelo')->get();
        return response()
-              ->json($barcos, 200, [], JSON_PRETTY_PRINT);        
+              ->json($casas, 200, [], JSON_PRETTY_PRINT);        
     }
 
     public function store(Request $request)
     { 
        $dados = $request->all();
        
-       $inc = Barco::create($dados);
+       $inc = Casa::create($dados);
 
        if ($inc) {
            return response()->json($inc, 201, [], JSON_PRETTY_PRINT);
@@ -31,7 +30,7 @@ class ApiController extends Controller
 
     public function show($id)
     {
-        $reg = Barco::find($id);
+        $reg = Casa::find($id);
 
         if ($reg) {
             return response()
@@ -44,7 +43,7 @@ class ApiController extends Controller
 
     public function update(Request $request, $id)
     {
-        $reg = Barco::find($id);
+        $reg = Casa::find($id);
 
         if ($reg) {
             $dados = $request->all();
@@ -66,7 +65,7 @@ class ApiController extends Controller
 
     public function destroy($id)
     {
-        $reg = Barco::find($id);
+        $reg = Casa::find($id);
 
         if ($reg) {
             if ($reg->delete()) {

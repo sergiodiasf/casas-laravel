@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Barcos Marciel</title>
+  <title>Casas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,41 +19,17 @@
 </header>
 <body>
 
-<div class="row align-items-center">
-  <div class="col text-left" style="background: #DF0101; height:40px; color: #ffffff;">  
-    <p style="margin-left: 50px; margin-top: 10px;"><i class="fas fa-phone-square"></i> (53) 3227 90 90 </p>
-  </div>
-
-  <div class="col text-center" style="background: #DF0101; height:40px; color: #ffffff;">  
-       <h3 style="margin-top: 5px;">Barcos Marciel</h3>
-  </div>
-
-  <div class="col text-right" style="background: #DF0101; height:40px;">
-      <p style="margin-right: 50px; margin-top: 10px;">  
-        <a href="#"><i class="fab fa-facebook"></i></a>      
-      </p>
-  </div>
-
-</div>
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/site">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#Modelos">Modelos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#SobreNós">Sobre Nós</a>
-      </li>
     </ul>
-    <form method="post" class="form-inline my-2 my-lg-0" action="{{route('barcos.filtroscom')}}">
+    <form method="post" class="form-inline my-2 my-lg-0" action="{{route('casas.filtroscom')}}">
       {{ csrf_field() }}
-      <input class="form-control mr-sm-2" type="text" name="modelo" id="modelo" placeholder="Buscar Barcos ..">
-      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+      <input class="form-control mr-sm-2" type="text" name="modelo" id="modelo" placeholder="Busca casa">
+      <button class="btn btn-outline-blue my-2 my-sm-0" type="submit">Buscar</button>
     </form>
   </div>
 </nav>

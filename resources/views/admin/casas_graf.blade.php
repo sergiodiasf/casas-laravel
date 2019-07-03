@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Grafico de Barcos')
+@section('title', 'Grafico de Casas')
 
 @section('content_header')
-    <h1>Grafico do Cadastro de Barcos
-    <a href="{{ route('barcos.index') }}" 
+    <h1>Grafico do Cadastro de Casas
+    <a href="{{ route('casas.index') }}" 
        class="btn btn-primary pull-right" role="button">
        Listagem</a>
     </h1>
@@ -18,16 +18,16 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Marcas', 'Nº Barcos'],
+          ['Tipos', 'Nº Casas'],
 
 @foreach ($dados as $linha)
-{!! "['$linha->marca', $linha->num], " !!}
+{!! "['$linha->tipo', $linha->num], " !!}
 @endforeach
 
         ]);
 
         var options = {
-          title: 'Nº de Barcos por marca',
+          title: 'Nº de Casas por tipo',
           is3D: true,
         };
 

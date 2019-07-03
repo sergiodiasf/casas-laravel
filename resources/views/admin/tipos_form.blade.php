@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Marcas')
+@section('title', 'Cadastro de Tipos')
 
 @section('content')
 
     <div class='col-sm-11'>
         @if ($acao == 1)
-            <h2> Inclusão de Marcas </h2>
+            <h2> Inclusão de Tipos </h2>
         @else
-            <h2> Alteração de Marcas </h2>
+            <h2> Alteração de Tipos </h2>
         @endif
     </div>
     <div class='col-sm-1'>
-        <a href="{{route('marcas.index')}}" class="btn btn-primary"
+        <a href="{{route('tipos.index')}}" class="btn btn-primary"
            role="button">Voltar</a>
     </div>
 
@@ -29,15 +29,15 @@
         @endif
 
         @if ($acao == 1)
-            <form method="post" action="{{route('marcas.store')}}">
+            <form method="post" action="{{route('tipos.store')}}">
                 @else
-                    <form method="post" action="{{route('marcas.update', $reg->id)}}">
+                    <form method="post" action="{{route('tipos.update', $reg->id)}}">
                         {!! method_field('put') !!}
                         @endif
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="nome">Nome da Marca:</label>
+                            <label for="nome">Nome do Tipo:</label>
                             <input type="text" class="form-control" id="nome"
                                    name="nome"
                                    value="{{$reg->nome or old('nome')}}"

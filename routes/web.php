@@ -1,25 +1,23 @@
 <?php
+Route::get('/', 'HomeController@welcome');
 
-Route::get('/artisan/storage', function() {
+Route::get('/artisan', function() {
     $command = 'storage:link';
     $result = Artisan::call($command);
     return Artisan::output();
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function() {
    Route::get('/', function() { return view('admin.index'); });
-   Route::resource('barcos', 'BarcoController');
-   Route::get('relbarcos', 'BarcoController@relbarcos');
+   Route::resource('casas', 'CasaController');
+   Route::get('relcasas', 'CasaController@relcasas');
 
    Route::resource('usuarios', 'UserController');
    Route::get('relusers', 'UserController@relusers');
 
-   Route::get('barcosgraf', 'BarcoController@graf')
-   ->name('barcos.graf');
+   Route::get('casasgraf', 'CasaController@graf')
+   ->name('casas.graf');
 
    Route::resource('clientes', 'UUserController');
 });
@@ -40,11 +38,11 @@ Route::get('admin/relcompra', 'PropostaController@relcompra');
 
 Route::get('admin/propostas', 'PropostaController@index');
 Route::get('admin/propostasaluguel', 'PropostaAluguelController@index');
-Route::post('barcosfiltroscom', 'BarcoComercialController@filtros')->name('barcos.filtroscom');
+Route::post('casasfiltroscom', 'CasaComercialController@filtros')->name('casas.filtroscom');
 // aqui seleciono a proposta
 Route::get('admin/resposta{id}', 'PropostaController@responder')->name('propostas.resposta');
 Route::post('admin/resposta', 'PropostaController@enviaEmail')->name('resposta');
-Route::resource('admin/marcas', 'MarcaController');
+Route::resource('admin/tipos', 'TipoController');
 Route::get('admin/propostagraf', 'PropostaController@graf')->name('proposta.graf');
 
 

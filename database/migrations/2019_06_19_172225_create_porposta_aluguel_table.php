@@ -19,7 +19,7 @@ class CreatePorpostaAluguelTable extends Migration
             $table->string('email', 100);
             $table->string('telefone', 50);
             $table->string('dias', 10);
-            $table->integer('barco_id');
+            $table->integer('casa_id');
             $table->timestamps();
         });
     }

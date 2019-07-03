@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-Use App\Barco;
-Use App\Marca;
+Use App\Casa;
+Use App\Tipo;
  
 class ListaController extends Controller
 {
@@ -16,8 +16,8 @@ class ListaController extends Controller
      */
     public function index()
     {
-        $barcos = Barco::all();
-        return view('site.barcos_lista', ['barcos' => $barcos]);
+        $casas = Casa::all();
+        return view('site.casas_lista', ['casas' => $casas]);
 
     }
 
@@ -29,9 +29,9 @@ class ListaController extends Controller
      */
     public function show($id)
     {
-        $dados = Barco::find($id);
+        $dados = Casa::find($id);
 
-        return view('site.barcos_show', ['barco' => $dados]);
+        return view('site.casas_show', ['casa' => $dados]);
     }
 
 

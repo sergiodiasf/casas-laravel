@@ -2,7 +2,7 @@
 
 @section('adminlte_css')
     <link rel="stylesheet"
-          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'blue') . '.min.css')}} ">
+          href="{{ asset('vendor/adminlte/dist/css/skins/skin-' . config('adminlte.skin', 'black') . '.min.css')}} ">
     @stack('css')
     @yield('css')
 @stop
@@ -23,7 +23,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" class="navbar-brand">
-                            {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
+                        <b>Casas</b>Serginho</a>
                         </a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                             <i class="fa fa-bars"></i>

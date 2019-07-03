@@ -41,11 +41,10 @@
                 <th>Nome do Cliente</th>
                 <th>Email</th>
                 <th>Telefone</th>
-                <th>Barco</th>
+                <th>Casa</th>
                 <th>dias</th>
                 <th>diaria</th>
                 <th>Data</th>
-                <!-- <th>Ação</th> -->
 
             </tr>
             @forelse($propostas as $proposta)
@@ -54,15 +53,11 @@
                     <td>{{$proposta->nome_cliente}}</td>
                     <td>{{$proposta->email}}</td>
                     <td>{{$proposta->telefone}}</td>
-                    <td>{{$proposta->barco->modelo}}</td>
+                    <td>{{$proposta->casa->modelo}}</td>
                     <td>{{$proposta->dias}}</td>
-                    <td>R$: {{number_format($proposta->barco->diaria, '2', ',', '.')}} &nbsp;&nbsp;&nbsp;</td>
+                    <td>R$: {{number_format($proposta->casa->diaria, '2', ',', '.')}} &nbsp;&nbsp;&nbsp;</td>
                     <td> {{date_format($proposta->created_at, 'd/m/Y')}} </td>
-                    <td>
-                        <!-- <a href="{{route('propostas.resposta', $proposta->id)}}"
-                           class="btn btn-info"
-                           role="button">Responder</a> &nbsp;&nbsp; -->
-                    </td>
+
                 </tr>
             @empty
 

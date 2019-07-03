@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Barcos')
+@section('title', 'Cadastro de Casas')
 
 @section('content_header')
-    <h1>Cadastro de Barcos
-    <a href="{{ route('barcos.create') }}" 
+    <h1>Cadastro de Casas
+    <a href="{{ route('casas.create') }}" 
        class="btn btn-primary pull-right" role="button">Novo</a>
     </h1>
 @endsection
@@ -19,10 +19,10 @@
 
 <table class="table table-striped">
   <tr>
-    <th> Modelo </th>
-    <th> Marca </th>
+    <th> Nome </th>
+    <th> Tipo </th>
     <th> categoria </th>
-    <th> Ano </th>
+    <th> Fabricada </th>
     <th> Preço R$ </th>
     <th> Data Cad. </th>
     <th> Diaria </th>
@@ -30,10 +30,10 @@
     <th>Foto </th>
     <th> Ações </th>
   </tr>  
-@forelse($barcos as $c)
+@forelse($casas as $c)
   <tr>
     <td> {{$c->modelo}} </td>
-    <td> {{$c->marca->nome}} </td>
+    <td> {{$c->tipo->nome}} </td>
     <td> {{$c->categoria}} </td>
     <td> {{$c->ano}} </td>
     <td> {{number_format($c->preco, 2, ',', '.')}} </td>
@@ -44,25 +44,25 @@
     @if(Storage::exists($c->foto))
     <img src="{{url('storage/'.$c->foto)}}"
          style="width: 80px; height: 50px;" 
-         alt="Foto de Barco"/>
+         alt="Foto de Casa"/>
     
     @else
 
     <img src="{{url('storage/fotos/sem_foto.png')}}"
          style="width: 80px; height: 50px;" 
-         alt="Foto de Barco"/>
+         alt="Foto de Casa"/>
 
     @endif
   </td>
 
     <td> 
     
-        <a href="{{route('barcos.edit', $c->id)}}" 
+        <a href="{{route('casas.edit', $c->id)}}" 
             class="btn btn-warning btn-sm" title="Alterar"
             role="button"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
         <form style="display: inline-block"
               method="post"
-              action="{{route('barcos.destroy', $c->id)}}"
+              action="{{route('casas.destroy', $c->id)}}"
               onsubmit="return confirm('Confirma Exclusão?')">
                {{method_field('delete')}}
                {{csrf_field()}}
@@ -73,11 +73,11 @@
   </tr>
   @if ($loop->last)
     <tr>
-      <td colspan=8> Soma dos preços dos barcos cadastrados R$: 
+      <td colspan=8> Soma dos preços das casas cadastradas R$: 
         {{number_format($soma, 2, ',', '.')}} </td>
     </tr>  
     <tr>
-      <td colspan=8> Preço Médio dos Barcos cadastrados R$: 
+      <td colspan=8> Preço Médio das Casas cadastradas R$: 
         {{number_format($c->avg('preco'), 2, ',', '.')}} </td>
     </tr>  
     <tr>
@@ -87,11 +87,11 @@
   @endif
 
 @empty
-  <tr><td colspan=8> Não há barcos cadastrados ou filtro da pesquisa não 
+  <tr><td colspan=8> Não há casas cadastradas ou filtro da pesquisa não 
                      encontrou registros </td></tr>
 @endforelse
 </table>
-{{ $barcos->links() }}
+{{ $casas->links() }}
 @endsection
 
 @section('js')

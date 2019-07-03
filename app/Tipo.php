@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Marca extends Model
+class Tipo extends Model
 {
-    public function marca() {
-        return $this->belongsTo('App\Marca');
+    public function tipo() {
+        return $this->belongsTo('App\Tipo');
     }
 
     protected $fillable = array('nome');

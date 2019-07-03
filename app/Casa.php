@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Barco extends Model
+class Casa extends Model
 {
-    public function marca() {
-        return $this->belongsTo('App\Marca');
+    public function tipo() {
+        return $this->belongsTo('App\Tipo');
     }
 
     // define os campos que serão editados na inclusão/alteração 
     // pelos métodos create e update
-    protected $fillable = ['modelo', 'marca_id', 'ano', 'categoria', 
+    protected $fillable = ['modelo', 'tipo_id', 'ano', 'categoria', 
     'tamanho','acompanhamentos','preco','diaria','foto'];
 
     public function getModeloAttribute($value) {

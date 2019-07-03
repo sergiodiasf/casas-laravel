@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Proposta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-Use App\Barco;
-Use App\Marca;
+Use App\Casa;
+Use App\Tipo;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AvisoPromocional;
 use Illuminate\Support\Facades\DB;
 
 
@@ -61,35 +60,15 @@ class PropostaController extends Controller
      */
     public function show($id)
     {
-        return view('site.proposta', ['barco' => Barco::find($id)]);
+        return view('site.proposta', ['casa' => Casa::find($id)]);
     }
 
     public function responder($id)
     {
         $proposta = Proposta::find($id);
-        $barco = Barco::find($proposta->barco_id);
+        $casa = Casa::find($proposta->casa_id);
         return view("admin.resposta", ["proposta" => $proposta, 
-                                                "barco" => $barco]);
-    }
-
-    public function enviaEmail(Request $request)
-    {
-         
-        $dados = $request->all();
-        $proposta = Proposta::find($dados["id"]);
-        $barco = Barco::find($proposta->barco_id);
-        $resposta = $request["mensagem"];
-        Mail::send("Mail.respostaproposta", ["proposta" => $proposta,
-                                              "barco" => $barco,
-                                              "mensagem" => $resposta], 
-                                              function ($message)use ($proposta) {
-            $message->from("contato.marciel@gmail.com");
-            $message->to($proposta->email);
-            $message->subject("Resposta proposta #".$proposta->id);
-        });
-
-        return redirect("admin/propostas");
-
+                                                "casa" => $casa]);
     }
 
     public function graf(){

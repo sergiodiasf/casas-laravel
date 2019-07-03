@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Barcos')
+@section('title', 'Cadastro de Casas')
 
 @section('content')
 <div class='col-sm-12'>
@@ -9,15 +9,15 @@
                 {{ session('status') }}
             </div>
         @endif
-    </div>
+    </div> 
 
     <div class='col-sm-11'>
-        <h2> Cadastro de Marcas </h2>
+        <h2> Cadastro de Tipos </h2>
     </div>
 
             <div class="col-sm-1">
                 <br>
-            <a href="{{route('marcas.create')}}" class="btn btn-info"
+            <a href="{{route('tipos.create')}}" class="btn btn-info"
                role="button">Nova</a>
             </div>
     <div class='col-sm-12'>
@@ -33,17 +33,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($marcas as $marca)
+            @foreach($tipos as $tipo)
                 <tr>
-                    <td style="text-align: center">{{$marca->id}}</td>
-                    <td>{{$marca->nome}}</td>
+                    <td style="text-align: center">{{$tipo->id}}</td>
+                    <td>{{$tipo->nome}}</td>
                     <td>
-                        <a href="{{route('marcas.edit', $marca->id)}}"
+                        <a href="{{route('tipos.edit', $tipo->id)}}"
                            class="btn btn-warning"
                            role="button">Alterar</a> &nbsp;&nbsp;
                         <form style="display: inline-block"
                               method="post"
-                              action="{{route('marcas.destroy', $marca->id)}}"
+                              action="{{route('tipos.destroy', $tipo->id)}}"
                               onsubmit="return confirm('Confirma Exclusão?')">
                             {{method_field('delete')}}
                             {{csrf_field()}}
@@ -56,7 +56,7 @@
             @endforeach
             </tbody>
         </table>
-         <div class="col-sm-12"> {{ $marcas->links() }}</div>
+         <div class="col-sm-12"> {{ $tipos->links() }}</div>
     </div>
 
 @endsection

@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastro de Barcos')
+@section('title', 'Cadastro de Casas')
 
 @section('content_header')
 
 @if ($acao==1)
-<h2>Inclusão de Barcos
+<h2>Inclusão de Casas
 @else ($acao ==2)
-<h2>Alteração de Barcos
+<h2>Alteração de Casas
 @endif          
 
-  <a href="{{ route('barcos.index') }}" class="btn btn-primary pull-right" role="button">Voltar</a>
+  <a href="{{ route('casas.index') }}" class="btn btn-primary pull-right" role="button">Voltar</a>
 </h2>
 
 @endsection
@@ -28,10 +28,10 @@
 @endif
 
 @if ($acao==1)
-<form method="POST" action="{{ route('barcos.store') }}"
+<form method="POST" action="{{ route('casas.store') }}"
  enctype="multipart/form-data">
 @else ($acao==2)
-<form method="POST" action="{{route('barcos.update', $reg->id)}}"
+<form method="POST" action="{{route('casas.update', $reg->id)}}"
  enctype="multipart/form-data">
 {!! method_field('put') !!}
 @endif          
@@ -40,7 +40,7 @@
 <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="modelo">Modelo do Barco</label>
+        <label for="modelo">Nome da Casa</label>
         <input type="text" id="modelo" name="modelo" required 
                value="{{$reg->modelo or old('modelo')}}"
                class="form-control">
@@ -49,12 +49,12 @@
 
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="marca_id">Marca do Barco</label>
-        <select id="marca_id" name="marca_id" class="form-control">
-          @foreach($marcas as $m)
+        <label for="tipo_id">Tipo de Casa</label>
+        <select id="tipo_id" name="tipo_id" class="form-control">
+          @foreach($tipos as $m)
             <option value="{{$m->id}}" 
-                    {{ ((isset($reg) and $reg->marca_id == $m->id) or 
-                       old('marca_id') == $m->id) ? "selected" : "" }}>
+                    {{ ((isset($reg) and $reg->tipo_id == $m->id) or 
+                       old('tipo_id') == $m->id) ? "selected" : "" }}>
                     {{$m->nome}}</option>
           @endforeach
         </select>  
@@ -65,7 +65,7 @@
   <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="tamanho">tamanho</label>
+          <label for="tamanho">Tamanho ex:202 m2</label>
           <input type="text" id="tamanho" name="tamanho" required 
                  value="{{$reg->tamanho or old('tamanho')}}"
                  class="form-control">
@@ -112,7 +112,7 @@
 
       <div class="col-sm-4">
         <div class="form-group">
-          <label for="ano">ano</label>
+          <label for="ano">Fabricada ex: 2001</label>
           <input type="text" id="ano" name="ano" required 
                  value="{{$reg->ano or old('ano')}}"
                  class="form-control">

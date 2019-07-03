@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarcasTable extends Migration
+class AddFotoDestaqueToCasas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateMarcasTable extends Migration
      */
     public function up()
     {
-        Schema::create('marcas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome', 40);
-            $table->timestamps();
+        Schema::table('casas', function (Blueprint $table) {
+            $table->string('foto', 60)->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateMarcasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marcas');
+        Schema::table('barcos', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -15,7 +15,7 @@
     <div class="container">
         <!-- Header -->
         <div class="container">
-            <h1><b>Comprar Barco</b></h1>
+            <h1><b>Comprar casa</b></h1>
             <hr>
         </div>
     </div>
@@ -38,34 +38,34 @@
                 <label for="proposta" class="mr-sm-2">*Valor da proposta R$:</label>
                 <input type="text" name="proposta" class="form-control" id="proposta" required>
             <br>
-                <input type="hidden" name="barco_id" value="{{$barco->id}}">
+                <input type="hidden" name="casa_id" value="{{$casa->id}}">
                 <button type="submit" class="btn btn-success">Enviar</button>
             </form>
             </div>
 
             <div class="col-sm-6">
-            @if(Storage::exists($barco->foto))
-                            <img src="{{url('storage/'.$barco->foto)}}"
+            @if(Storage::exists($casa->foto))
+                            <img src="{{url('storage/'.$casa->foto)}}"
                             style="width:100%; height: 18vw;" 
-                            alt="Foto de barco"/>
+                            alt="Foto de casa"/>
             @else
                             <img src="{{url('storage/fotos/sem_foto.png')}}"
                             style="width: 100%; height: 18vw;" 
-                            alt"Foto de barco"/>
+                            alt"Foto de casa"/>
             @endif
                 <ul class="none">
-                    <li><b>Modelo:</b> {{$barco->modelo}}</li>
-                    <li><b>Ano:</b> {{$barco->ano}}</li>
-                    <li><b>Categora:</b> {{$barco->categoria}}</li>
-                    <li><b>Tamanho:</b> {{$barco->tamanho}}</li>
-                    <li><b>Marca:</b> {{$barco->marca->nome}}</li>
-                    <li><b>Acompanhamentos:</b> {{$barco->acompanhamentos}}</li>
-                    <li><h2>{{number_format($barco->preco, '2', ',', '.')}}</h2></li>
+                    <li><b>Nome:</b> {{$casa->modelo}}</li>
+                    <li><b>Fabricada:</b> {{$casa->ano}}</li>
+                    <li><b>Categoria:</b> {{$casa->categoria}}</li>
+                    <li><b>Tamanho:</b> {{$casa->tamanho}}</li>
+                    <li><b>Tipo:</b> {{$casa->tipo->nome}}</li>
+                    <li><b>Acompanhamentos:</b> {{$casa->acompanhamentos}}</li>
+                    <li><h2>{{number_format($casa->preco, '2', ',', '.')}}</h2></li>
                 </ul>
             </div>
         </div>
 <footer class="page-footer font-small blue pt-4 mt-4">
-  <div class="footer-copyright text-center py-3">© 2018 Copyright Barcos Marciel</div>
+  <div class="footer-copyright text-center py-3">© 2018 Copyright Casas-Laravel</div>
 </footer>
     </div>
 

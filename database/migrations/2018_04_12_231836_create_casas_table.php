@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBarcosTable extends Migration
+class CreateCasasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateBarcosTable extends Migration
      */
     public function up()
     {
-        Schema::create('barcos', function (Blueprint $table) {
+        Schema::create('casas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('categoria', 40);
             $table->string('tamanho', 40);
-            $table->integer('marca_id')->unsigned();
+            $table->integer('tipo_id')->unsigned();
             // define uma chave estrangeira que se relaciona com marcas
-            $table->foreign('marca_id')
-                  ->references('id')->on('marcas')
+            $table->foreign('tipo_id')
+                  ->references('id')->on('tipos')
                   ->onDelete('restrict');            
             $table->string('modelo', 30);
             $table->smallInteger('ano');
@@ -38,6 +38,6 @@ class CreateBarcosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barcos');
+        Schema::dropIfExists('casas');
     }
 }

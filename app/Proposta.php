@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
  
 class Proposta extends Model
 {
-    protected $fillable = array('id','nome_cliente', 'email', 'telefone', 'proposta', 'barco_id');
+    protected $fillable = array('id','nome_cliente', 'email', 'telefone', 'proposta', 'casa_id');
 
-    public function barco() {
-        return $this->belongsTo('App\Barco');
+    public function casa() {
+        return $this->belongsTo('App\Casa');
     }
 
     public function setPropostaAttribute($value) {

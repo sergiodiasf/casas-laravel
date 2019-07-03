@@ -19,7 +19,7 @@ class CreatePropostaTable extends Migration
             $table->string('email', 100);
             $table->string('telefone', 50);
             $table->decimal('proposta', 10, 2);
-            $table->integer('barco_id');
+            $table->integer('casa_id');
             $table->timestamps();
         });
     }

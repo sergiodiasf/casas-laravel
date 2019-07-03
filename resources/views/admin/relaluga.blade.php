@@ -1,4 +1,4 @@
-<h1>Barcos Marciel</h1>
+<h1>Casas Serginho</h1>
 <h2>Relatório de Solicitações  de Aluguel</h2>
 
 <table class="table table-striped" border='1'>
@@ -7,7 +7,7 @@
                 <th>Nome do Cliente</th>
                 <th>Email</th>
                 <th>Telefone</th>
-                <th>Barco</th>
+                <th>Casa</th>
                 <th>dias</th>
                 <th>diaria</th>
                 <th>Data</th>
@@ -20,9 +20,9 @@
                     <td>{{$proposta->nome_cliente}}</td>
                     <td>{{$proposta->email}}</td>
                     <td>{{$proposta->telefone}}</td>
-                    <td>{{$proposta->barco->modelo}}</td>
+                    <td>{{$proposta->casa->modelo}}</td>
                     <td>{{$proposta->dias}}</td>
-                    <td>R$: {{number_format($proposta->barco->diaria, '2', ',', '.')}} &nbsp;&nbsp;&nbsp;</td>
+                    <td>R$: {{number_format($proposta->casa->diaria, '2', ',', '.')}} &nbsp;&nbsp;&nbsp;</td>
                     <td> {{date_format($proposta->created_at, 'd/m/Y')}} </td>
 
                 </tr>

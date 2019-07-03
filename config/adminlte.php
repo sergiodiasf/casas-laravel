@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'title' => 'Barcos Marciel',
+    'title' => 'Casas Serginho',
 
     'title_prefix' => '',
 
-    'title_postfix' => ' - Barcos Marciel',
+    'title_postfix' => ' - Casas Serginho',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Barcos</b> Marciel',
+    'logo' => '<b>Casas</b> Serginho',
 
-    'logo_mini' => '<b>B</b>M',
+    'logo_mini' => '<b>C</b>S',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'red',
+    'skin' => 'black',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,14 +116,14 @@ return [
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Barcos',
+                    'text' => 'Casas',
                     'icon' => 'car',
-                    'url'  => 'admin/barcos',
+                    'url'  => 'admin/casas',
                 ],    
                 [
-                    'text' => 'Marcas',
+                    'text' => 'Tipos',
                     'icon' => 'list-ul',
-                    'url'  => 'admin/marcas',
+                    'url'  => 'admin/tipos',
                 ], 
                 [
                     'text' => 'Cadastrar Usuarios',
@@ -139,8 +139,8 @@ return [
             'label_color' => 'warning',
             'submenu' => [
                 [
-                    'text' => 'Barcos por Marca',
-                    'url'  => 'admin/barcosgraf',
+                    'text' => 'Casas por Tipo',
+                    'url'  => 'admin/casasgraf',
                 ],      
                 [
                     'text' => 'Propostas Mensais',
@@ -155,8 +155,8 @@ return [
             'label_color' => 'danger', 
             'submenu' => [
                 [
-                    'text' => 'Barcos',
-                    'url'  => 'admin/relbarcos',
+                    'text' => 'Casass',
+                    'url'  => 'admin/relcasas',
                 ],    
                 [
                     'text' => 'Clientes',

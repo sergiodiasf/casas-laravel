@@ -12,11 +12,11 @@ class PropostaAluguelTableSeeder extends Seeder
     public function run() 
     {
         DB::table('proposta_aluguels')->insert([
-            'nome_cliente' => 'Jean Manezinho',
+            'nome_cliente' => 'Julho do caminhao',
             'email' => 'tt@tt.com',
-            'telefone' => '654654654',
-            'dias' => '10',
-            'barco_id' =>  '2',
+            'telefone' => '454654654',
+            'dias' => '180',
+            'casa_id' =>  '2',
             'created_at' => date('Y-m-d h:i:s'),
             'updated_at' => date('Y-m-d h:i:s')            
         ]);
